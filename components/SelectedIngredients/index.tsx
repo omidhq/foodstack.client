@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react";
 
 interface SelectedIngredientsProps {
-  newIngredient: string
+  ingredients: string[]
 }
 
-export default function SelectedIngredients({newIngredient}:SelectedIngredientsProps) {
-  const [ingredients, setIngredients] = useState<string[]>([]);
-
-  useEffect(() => {
-    setIngredients(oldIngredients => [...oldIngredients, newIngredient]);
-  }, [newIngredient]);
-
+export default function SelectedIngredients({ingredients}:SelectedIngredientsProps) {
+  
   return (
     <>
       {ingredients.map((x, k) => <p key={k}>{x}</p>)}

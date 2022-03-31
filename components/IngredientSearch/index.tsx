@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import SelectedIngredients from '../SelectedIngredients';
-import { IngredientResponse } from './type';
+import { IngredientResponse, IngredientSearchProp } from './type';
 
-export default function IngredientSearch() {
+export default function IngredientSearch({ingredientQuery}:IngredientSearchProp ) {
   const [ingredients, setIngredients] = useState<IngredientResponse[]>();
   const [newIngredient, setNewIngredient] = useState<string>("");
-  const [chosenIngredient, setChosenIngredient] = useState<string>("");
+
+  const [ingredientArray, setIngredientArray] = useState<string[]>([]);
 
   useEffect(() => {
     fetch("https://localhost:7255/api/ingredients", { mode: 'cors' })
@@ -15,7 +16,7 @@ export default function IngredientSearch() {
 
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setChosenIngredient(newIngredient);
+    setIngredientArray(oldIngredients => [...oldIngredients, newIngredient]);
 
     setNewIngredient("");
   };
@@ -31,7 +32,9 @@ export default function IngredientSearch() {
         </datalist> 
       </form>
 
-      <SelectedIngredients newIngredient={chosenIngredient} />
+      <SelectedIngredients ingredients={ingredientArray} />
+
+      <button onClick={() => ingredientQuery(ingredientArray)}>Find Recipes</button>
     </>
   )
 }
