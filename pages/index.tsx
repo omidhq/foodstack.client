@@ -1,10 +1,18 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useState } from 'react'
 import IngredientSearch from '../components/IngredientSearch'
+import RecipeResults from '../components/RecipeResults'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
+  const [ingredients, setIngredients] = useState<string[]>([]);
+
+  const passSearch = (ingredientQuery:string[]) => {
+    setIngredients(ingredientQuery);
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,7 +21,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <IngredientSearch></IngredientSearch>
+      <IngredientSearch ingredientQuery={passSearch}/>
+      <RecipeResults ingredients={ingredients}/>
      
 
       <footer className={styles.footer}>
