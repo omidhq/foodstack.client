@@ -3,6 +3,6 @@ export interface IngredientResponse {
   name: string
 }
 
-export interface IngredientSearchProp {
+export interface IngredientSelectionProp {
   ingredientQuery: Function
 }
