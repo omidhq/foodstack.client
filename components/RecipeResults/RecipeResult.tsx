@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { RecipeResultsProps, RecipeResponse } from './RecipeResult.types';
 import RecipeCard from "../RecipeCard";
+import Pagination from '../Pagination';
 
 
 export default function RecipeResults({ ingredients }: RecipeResultsProps) {
+
   const [results, setResults] = useState<RecipeResponse[]>([]);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+
+  const maxPerPage:number = 10;
 
   useEffect(() => {
     if (ingredients.length === 0) {
@@ -17,9 +22,16 @@ export default function RecipeResults({ ingredients }: RecipeResultsProps) {
       .then((data: RecipeResponse[]) => setResults(data));
   }, [ingredients]);
 
+  const startingOffset = () => ((currentPage - 1) * maxPerPage);
+
   return (
-    <ul>
-      {results.map(result => <RecipeCard title={result.title} image={result.image} key={result.id} />)}
-    </ul>
+    <>
+      <ul>
+        {
+          results.slice(startingOffset(), startingOffset() + maxPerPage).map(result => <RecipeCard title={result.title} image={result.image} key={result.id} />)
+        }
+      </ul>
+      <Pagination pageNumber={setCurrentPage} maxPages={results.length / maxPerPage} />
+    </>
   )
 }
