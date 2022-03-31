@@ -1,0 +1,9 @@
+.searchIcon {
+  display: inline-block;
+  width: 50px;
+  height: 56px; /* equal to tailwaind's h-14 in input height*/
+  background-image: url('SearchIcon.svg');
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+}

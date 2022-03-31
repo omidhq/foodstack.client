@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SelectedIngredientsList from '../SelectedIngredientsList'
 import { IngredientResponse, IngredientSelectionProp } from './IngredientSelection.types'
+import styles from './IngredientSelection.module.css'
 
 export default function IngredientSelection({ ingredientQuery }: IngredientSelectionProp) {
   const [ingredients, setIngredients] = useState<IngredientResponse[]>()
@@ -36,6 +37,7 @@ export default function IngredientSelection({ ingredientQuery }: IngredientSelec
           value={newIngredient}
           placeholder="Type an ingredient"
         />
+        <button type='submit' className={`${styles.searchIcon} bg-gray-300 rounded-r`}></button>
 
         <datalist id='ingredient-list'>
           {ingredients?.map((i) => (
