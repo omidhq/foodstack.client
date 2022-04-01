@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <div className='w-lg flex flex-col'>
+      <div className='w-lg flex flex-col h-screen justify-between'>
         <header className='bg-gray-100 p-5 mb-10 rounded-b-3xl'>
           <h1 className='text-2xl uppercase text-center leading-loose font-semibold text-blue-500'>Foodstack</h1>
           <nav></nav>
@@ -28,11 +28,11 @@ const Home: NextPage = () => {
           <IngredientSearch ingredientQuery={passSearch} />
           <RecipeResults ingredients={ingredients} />
         </main>
-        <footer>
-          <p>A final project for the &lt;salt/&gt; Fullstack .NET Bootcamp. Source code can be found on GitHub here:</p>
-          <address>
-            <a href="https://github.com/omidhq/foodstack.client">FrontEnd Source</a>
-            <a href="https://github.com/omidhq/foodstack.api">BackEnd Source</a>
+        <footer className='bg-gray-100 p-5 mt-10 rounded-t-3xl text-xs'>
+          <p>Final project for the &lt;salt/&gt; Fullstack .NET Bootcamp.</p>
+          <address className='ml-2'>
+            <a className='block hover:underline' href="https://github.com/omidhq/foodstack.client">FrontEnd: github.com/omidhq/foodstack.client</a>
+            <a className='block hover:underline'href="https://github.com/omidhq/foodstack.api">BackEnd: github.com/omidhq/foodstack.api</a>
           </address>
         </footer>
       </div>
