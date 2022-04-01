@@ -20,8 +20,8 @@ const Home: NextPage = () => {
       </Head>
 
       <div className='w-lg flex flex-col'>
-        <header>
-          <h1>Foodstack</h1>
+        <header className='bg-gray-100 p-5 mb-10 rounded-b-3xl'>
+          <h1 className='text-2xl uppercase text-center leading-loose font-semibold text-blue-500'>Foodstack</h1>
           <nav></nav>
         </header>
         <main>
