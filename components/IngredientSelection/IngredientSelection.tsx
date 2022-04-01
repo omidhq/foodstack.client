@@ -21,11 +21,7 @@ export default function IngredientSelection({ ingredientQuery }: IngredientSelec
     setNewIngredient('')
   }
 
-  const removeItem = (index:number) => {
-    setIngredientArray(ingredientArray.filter(function(value, arrIndex) {
-      return index !== arrIndex;
-    }));
-  }
+  const removeItem = (index:number) => setIngredientArray(ingredientArray.filter((v, arrIndex) =>  index !== arrIndex));
 
   return (
     <>
