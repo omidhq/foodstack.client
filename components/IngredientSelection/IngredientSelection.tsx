@@ -22,6 +22,8 @@ export default function IngredientSelection({ ingredientQuery }: IngredientSelec
     setNewIngredient('')
   }
 
+  const removeItem = (index:number) => setIngredientArray(ingredientArray.filter((v, arrIndex) =>  index !== arrIndex));
+
   return (
     <>
       <form onSubmit={submitForm} className="flex">
@@ -46,7 +48,7 @@ export default function IngredientSelection({ ingredientQuery }: IngredientSelec
         </datalist>
       </form>
 
-      <SelectedIngredientsList ingredients={ingredientArray} />
+      <SelectedIngredientsList ingredients={ingredientArray} callback={removeItem}/>
 
       <button onClick={() => ingredientQuery(ingredientArray)}>
         Find Recipes
