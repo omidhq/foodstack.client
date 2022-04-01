@@ -20,8 +20,21 @@ const Home: NextPage = () => {
       </Head>
 
       <div className='w-lg flex flex-col'>
-        <IngredientSearch ingredientQuery={passSearch} />
-        <RecipeResults ingredients={ingredients} />
+        <header>
+          <h1>Foodstack</h1>
+          <nav></nav>
+        </header>
+        <main>
+          <IngredientSearch ingredientQuery={passSearch} />
+          <RecipeResults ingredients={ingredients} />
+        </main>
+        <footer>
+          <p>A final project for the &lt;salt/&gt; Fullstack .NET Bootcamp. Source code can be found on GitHub here:</p>
+          <address>
+            <a href="https://github.com/omidhq/foodstack.client">FrontEnd Source</a>
+            <a href="https://github.com/omidhq/foodstack.api">BackEnd Source</a>
+          </address>
+        </footer>
       </div>
 
     </div>
