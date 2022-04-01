@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SelectedIngredientsList from '../SelectedIngredientsList'
 import { IngredientResponse, IngredientSelectionProp } from './IngredientSelection.types'
+import styles from './IngredientSelection.module.css'
 
 export default function IngredientSelection({ ingredientQuery }: IngredientSelectionProp) {
   const [ingredients, setIngredients] = useState<IngredientResponse[]>()
@@ -25,17 +26,20 @@ export default function IngredientSelection({ ingredientQuery }: IngredientSelec
 
   return (
     <>
-      <form onSubmit={submitForm}>
-        <label htmlFor='ingredient-choice'>Choose an ingredient:</label>
+      <form onSubmit={submitForm} className="flex">
         <input
           list='ingredient-list'
           id='ingredient-choice'
           name='ingredient-choice'
+          autoFocus
+          className='border-2 border-gray-300 bg-gray-300 rounded-l focus:outline-none py-2 px-4 h-14 w-96'
           onChange={(e) => {
             setNewIngredient(e.target.value)
           }}
           value={newIngredient}
+          placeholder="Type an ingredient"
         />
+        <button type='submit' className={`${styles.searchIcon} bg-gray-300 rounded-r`}></button>
 
         <datalist id='ingredient-list'>
           {ingredients?.map((i) => (
