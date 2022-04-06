@@ -39,20 +39,20 @@ export default function IngredientSelection({ ingredientQuery }: IngredientSelec
 
   return (
     <>
-      <form onSubmit={submitForm} className="flex">
+      <form onSubmit={submitForm} className="flex w-lg relative">
         <input
           list='ingredient-list'
           id='ingredient-choice'
           name='ingredient-choice'
           autoFocus
-          className='border-2 border-gray-300 bg-gray-300 rounded-l focus:outline-none py-2 px-4 h-14 w-96'
+          className='border-2 border-gray-300 bg-gray-300 rounded-l focus:outline-none py-2 px-4 h-14 w-full'
           onChange={(e) => {
             setNewIngredient(e.target.value)
           }}
           value={newIngredient}
           placeholder="Type an ingredient"
         />
-        <button type='submit' className={`${styles.searchIcon} bg-gray-300 rounded-r`}></button>
+        <button type='submit' className={`${styles.searchIcon} bg-gray-300 rounded-r absolute right-0`}></button>
 
         <datalist id='ingredient-list'>
           {ingredients?.map((i) => (

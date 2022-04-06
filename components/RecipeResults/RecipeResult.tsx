@@ -9,7 +9,7 @@ export default function RecipeResults({ ingredients }: RecipeResultsProps) {
   const [results, setResults] = useState<RecipeResponse[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  const maxPerPage:number = 10;
+  const maxPerPage: number = 10;
 
   useEffect(() => {
     if (ingredients.length === 0) {
@@ -26,7 +26,7 @@ export default function RecipeResults({ ingredients }: RecipeResultsProps) {
 
   return (
     <>
-      <ul>
+      <ul className='mt-6 max-w-xl'>
         {
           results.slice(startingOffset(), startingOffset() + maxPerPage).map(result => <RecipeCard title={result.title} image={result.image} key={result.id} />)
         }
