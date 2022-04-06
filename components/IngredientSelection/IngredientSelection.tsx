@@ -9,6 +9,19 @@ export default function IngredientSelection({ ingredientQuery }: IngredientSelec
 
   const [ingredientArray, setIngredientArray] = useState<string[]>([])
 
+  const [validationError, setvalidationError] = useState('')
+
+  const showError = (errorCause?: string) => {
+    if (errorCause === 'empty') {
+      setvalidationError("The ingredient feild can't be empty!")
+    } else if (errorCause === 'invalid') {
+      setvalidationError('Please enter a valid ingredient!')
+    } else {
+      setvalidationError('You have already entered the ingredient!')
+    }
+    setTimeout(setvalidationError, 4000, '')
+  }
+
   useEffect(() => {
     fetch('https://localhost:7255/api/ingredients', { mode: 'cors' })
       .then((response) => response.json())
@@ -17,12 +30,20 @@ export default function IngredientSelection({ ingredientQuery }: IngredientSelec
 
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    setIngredientArray((oldIngredients) => [...oldIngredients, newIngredient])
+    if (!newIngredient || newIngredient.trim() === '') {
+      showError('empty')
+    } else if (ingredientArray.includes(newIngredient)) {
+      showError('duplicate')
+    } else if (ingredients?.every((i) => i.name !== newIngredient)) {
+      showError('invalid')
+    } else {
+      setIngredientArray((oldIngredients) => [...oldIngredients, newIngredient])
+    }
 
     setNewIngredient('')
   }
 
-  const removeItem = (index:number) => setIngredientArray(ingredientArray.filter((v, arrIndex) =>  index !== arrIndex));
+  const removeItem = (index: number) => setIngredientArray(ingredientArray.filter((v, arrIndex) => index !== arrIndex));
 
   return (
     <>
@@ -48,11 +69,16 @@ export default function IngredientSelection({ ingredientQuery }: IngredientSelec
         </datalist>
       </form>
 
-      <SelectedIngredientsList ingredients={ingredientArray} callback={removeItem}/>
+      <SelectedIngredientsList ingredients={ingredientArray} callback={removeItem} />
 
       <button onClick={() => ingredientQuery(ingredientArray)}>
         Find Recipes
       </button>
+      <div className="absolute top-14 mt-10 bg-red-200 text-red-900">
+        <span>
+          {validationError}
+        </span>
+      </div>
     </>
   )
 }
