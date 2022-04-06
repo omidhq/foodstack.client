@@ -26,7 +26,7 @@ export default function RecipeResults({ ingredients }: RecipeResultsProps) {
 
   return (
     <>
-      <ul>
+      <ul className='mt-6 max-w-xl'>
         {
           results.slice(startingOffset(), startingOffset() + maxPerPage).map(result => <RecipeCard title={result.title} image={result.image} key={result.id} />)
         }
