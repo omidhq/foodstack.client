@@ -9,7 +9,7 @@ export default function RecipeResults({ ingredients }: RecipeResultsProps) {
   const [results, setResults] = useState<RecipeResponse[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  const maxPerPage: number = 10;
+  const maxPerPage:number = 20;
 
   useEffect(() => {
     if (ingredients.length === 0) {
