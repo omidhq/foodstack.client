@@ -63,7 +63,7 @@ export default function IngredientSelection({ ingredientQuery }: IngredientSelec
 
       <SelectedIngredientsList ingredients={ingredientArray} callback={removeItem} />
 
-      <button className={`${styles.searchIcon} bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 pl-4 pr-10 rounded`} onClick={() => ingredientQuery(ingredientArray)}>
+      <button className={`${styles.searchIcon} bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 pl-4 pr-10 rounded relative self-end`} onClick={() => ingredientQuery(ingredientArray)}>
         Find Recipes
       </button>
 

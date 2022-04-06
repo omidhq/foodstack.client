@@ -28,7 +28,7 @@ const Home: NextPage = () => {
           </h1>
           <nav></nav>
         </header>
-        <main>
+        <main className='flex flex-col'>
           <IngredientSearch ingredientQuery={passSearch} />
           <RecipeResults ingredients={ingredients} />
         </main>
