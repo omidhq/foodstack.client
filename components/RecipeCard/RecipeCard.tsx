@@ -4,7 +4,7 @@ import { RecipeCardProps } from './RecipeCard.types';
 
 export default function RecipeCard({ title, image }: RecipeCardProps) {
   return (
-    <li className='border-2 border-blue-200 rounded mb-4 px-4 flex min'>
+    <li className='border-2 border-blue-200 rounded mb-4 px-4 flex'>
       <figure className='w-44 flex-none'>
         <Image layout="responsive" objectFit="contain" width="100%" height="100%" src={image} alt={title} />
       </figure>

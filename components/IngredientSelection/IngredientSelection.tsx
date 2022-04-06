@@ -45,14 +45,14 @@ export default function IngredientSelection({ ingredientQuery }: IngredientSelec
           id='ingredient-choice'
           name='ingredient-choice'
           autoFocus
-          className='border-2 border-gray-300 bg-gray-300 rounded-l focus:outline-none py-2 px-4 h-14 w-full'
+          className='border-2 border-gray-300 bg-gray-300 rounded focus:outline-none py-2 px-4 h-14 w-full'
           onChange={(e) => {
             setNewIngredient(e.target.value)
           }}
           value={newIngredient}
           placeholder="Type an ingredient"
         />
-        <button type='submit' className={`${styles.searchIcon} bg-gray-300 rounded-r absolute right-0`}></button>
+        <button type='submit' className={`${styles.addIcon} bg-gray-300 rounded absolute right-0`}></button>
 
         <datalist id='ingredient-list'>
           {ingredients?.map((i) => (
@@ -63,7 +63,7 @@ export default function IngredientSelection({ ingredientQuery }: IngredientSelec
 
       <SelectedIngredientsList ingredients={ingredientArray} callback={removeItem} />
 
-      <button onClick={() => ingredientQuery(ingredientArray)}>
+      <button className={`${styles.searchIcon} bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 pl-4 pr-10 rounded relative self-end`} onClick={() => ingredientQuery(ingredientArray)}>
         Find Recipes
       </button>
 
