@@ -6,10 +6,6 @@ export default function Pagination({ pageNumber, maxPages}: PaginationProps) {
   const [currentPage, setCurrentPage] = useState<number>(1);
   useEffect( () => {
     pageNumber(currentPage);
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
   }, [currentPage, pageNumber]);
   
   const updatePageNum = (newNum:number) => {
@@ -17,6 +13,10 @@ export default function Pagination({ pageNumber, maxPages}: PaginationProps) {
     newNum <= 1 ? 1 :
     newNum;
     setCurrentPage(newNum);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   }
 
   const incrementPage = () => updatePageNum(currentPage+1);
