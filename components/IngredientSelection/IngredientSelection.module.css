@@ -1,7 +1,27 @@
-.searchIcon {
-  display: inline-block;
+.addIcon::after {
+  content: ' + ';
   width: 50px;
-  height: 56px; /* equal to tailwaind's h-14 in input height*/
+  height: 56px;
+  font-size: 36px;
+  color: #777;
+  font-weight: bold;
+  display: inline-block;
+}
+.addIcon:hover::after {
+  color: #444;
+}
+
+.searchIcon {
+  position: relative;
+}
+.searchIcon::after {
+  content: '';
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  display: inline-block;
+  width: 34px;
+  height: 34px; /* equal to tailwaind's h-14 in input height*/
   background-image: url('SearchIcon.svg');
   background-size: 80%;
   background-repeat: no-repeat;
