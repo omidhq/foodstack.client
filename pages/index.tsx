@@ -1,18 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState } from 'react'
 import IngredientSearch from '../components/IngredientSelection'
-import RecipeResults from '../components/RecipeResults'
 import style from '../styles/Home.module.css'
 
+
 const Home: NextPage = () => {
-  const [ingredients, setIngredients] = useState<string[]>([])
-
-  const passSearch = (ingredientQuery: string[]) => {
-    setIngredients(ingredientQuery)
-  }
-
   return (
     <div className='flex place-content-center'>
       <Head>
@@ -29,8 +22,7 @@ const Home: NextPage = () => {
           <nav></nav>
         </header>
         <main className='flex flex-col'>
-          <IngredientSearch ingredientQuery={passSearch} />
-          <RecipeResults ingredients={ingredients} />
+          <IngredientSearch/>
         </main>
         <footer className='bg-gray-100 p-5 mt-10 rounded-t-3xl text-xs text-center'>
           <p>Final project for the &lt;salt/&gt; Fullstack .NET Bootcamp.</p>
