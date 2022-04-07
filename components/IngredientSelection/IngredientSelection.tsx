@@ -44,7 +44,6 @@ export default function IngredientSelection({ ingredientQuery }: IngredientSelec
           list='ingredient-list'
           id='ingredient-choice'
           name='ingredient-choice'
-          autoFocus
           className='border-2 border-gray-300 bg-gray-300 rounded focus:outline-none py-2 px-4 h-14 w-full'
           onChange={(e) => {
             setNewIngredient(e.target.value)
