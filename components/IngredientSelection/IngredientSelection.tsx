@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import SelectedIngredientsList from '../SelectedIngredientsList'
 import InputValidationError from '../InputValidationError'
-import { IngredientResponse, IngredientSelectionProp } from './IngredientSelection.types'
+import { IngredientResponse } from './IngredientSelection.types'
 import styles from './IngredientSelection.module.css'
+import Link from 'next/link'
 
-export default function IngredientSelection({ ingredientQuery }: IngredientSelectionProp) {
+export default function IngredientSelection() {
+
   const [ingredients, setIngredients] = useState<IngredientResponse[]>()
   const [newIngredient, setNewIngredient] = useState<string>('')
-
   const [ingredientArray, setIngredientArray] = useState<string[]>([])
-
   const [validationError, setvalidationError] = useState('')
 
   useEffect(() => {
@@ -17,6 +17,17 @@ export default function IngredientSelection({ ingredientQuery }: IngredientSelec
       .then((response) => response.json())
       .then((data: IngredientResponse[]) => setIngredients(data))
   }, [])
+
+
+  useLayoutEffect(() => {
+    if (sessionStorage.getItem('ingredientArray')) {
+      setIngredientArray(sessionStorage.getItem('ingredientArray')?.split(',') ?? [])
+    }
+  }, [])
+
+  useEffect(() => {
+    sessionStorage.setItem('ingredientArray', ingredientArray.join(','))
+  }, [ingredientArray])
 
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
