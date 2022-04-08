@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useState } from 'react'
+import FullRecipe from '../components/FullRecipe'
 import IngredientSearch from '../components/IngredientSelection'
 import RecipeResults from '../components/RecipeResults'
 
@@ -27,6 +28,7 @@ const Home: NextPage = () => {
         <main>
           <IngredientSearch ingredientQuery={passSearch} />
           <RecipeResults ingredients={ingredients} />
+          <FullRecipe recipeId='665573'/>
         </main>
         <footer className='bg-gray-100 p-5 mt-10 rounded-t-3xl text-xs'>
           <p>Final project for the &lt;salt/&gt; Fullstack .NET Bootcamp.</p>
